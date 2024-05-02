@@ -11,7 +11,7 @@ if (!isset($_SESSION['user'])) {
 $user = $_SESSION['user'];
 ?>
 
-<?php include 'header.php'; ?> 
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +21,7 @@ $user = $_SESSION['user'];
     <title>Welcome</title>
 </head>
 <body>
+<?php include 'header.php'; ?> 
     <h1>Welcome, <?php echo htmlspecialchars($user->getName(), ENT_QUOTES, 'UTF-8'); ?>!</h1>
     
 </body>

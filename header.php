@@ -15,7 +15,8 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 <body>
     <header>
-        <h1>Lesgo</h1> <img src="unnamed.jpg" alt="Neco">
+            <h1>Lesgo</h1>
+            
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
@@ -28,8 +29,6 @@ if (session_status() == PHP_SESSION_NONE) {
                     <li><a href="register.php">Register</a></li>
                     <li><a href="login.php">Login</a></li>
                 <?php endif; ?>
-
-                
             </ul>
         </nav>
     </header>

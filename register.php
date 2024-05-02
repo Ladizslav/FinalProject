@@ -38,13 +38,14 @@ if (isset($_POST['reg_user'])) {
     }
 }
 ?>
-<?php include 'header.php'; ?> 
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Register</title>
 </head>
 <body>
+<?php include 'header.php'; ?> 
     <div class="header">
         <h2>Register</h2>
     </div>
