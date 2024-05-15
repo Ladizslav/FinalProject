@@ -45,3 +45,11 @@ nav a {
 .logout-btn:hover {
     text-decoration: underline;
 }
+footer img {
+    width: 40px;
+}
+
+div {
+    padding-left: 20px;
+    padding-right: 20px;
+}
