@@ -2,23 +2,15 @@
 
 class User{
     public int $id;
-    //private int $age;
     protected string $name;
     protected string $password;
 
-    /*public function __construct(int $id, int $age, string $name){
-        $this-> id = $id;
-        $this-> age = $age;
-        $this-> name = $name;
-    }*/
     public function __construct(int $id, string $name,string $password){
         $this-> id = $id;
         $this-> name = $name;
         $this-> password = $password;
     }
-    /*
-     * @return void
-     */ 
+
     public function setId(int $id): void{
         $this -> id = $id;
     }
@@ -45,31 +37,40 @@ class User{
         return $this->name;
     }
 
-
-    /*public static function bark(){
-        echo "BARK!";
-    }
-    */
-
     public function __toString(){
         return $this->jmeno .":". $this->heslo;
     }
 
-    public static function getUserByUsernameAndPassword($username, $password)
-{
-    $connection = DBC::getConnection();
-    $query = "SELECT * FROM users WHERE username = '$username'";
-    $result = mysqli_query($connection, $query);
+    public static $failedLoginAttempts = array();
 
-    if ($result && $user_data = mysqli_fetch_assoc($result)) {
-        if (password_verify($password, $user_data['password'])) {
-            $user = new User($user_data['id'], $user_data['username'], $user_data['password']);
-            return $user;
+    public static function getUserByUsernameAndPassword($username, $password)
+    {
+        if (isset(self::$failedLoginAttempts[$username]) && count(self::$failedLoginAttempts[$username]) >= 3) {
+            $logMessage = "Failed login attempt after three failures: Username - $username, IP - {$_SERVER['REMOTE_ADDR']}, Time - " . date('Y-m-d H:i:s') . PHP_EOL;
+            $logFile = 'login_attempts.log';
+            file_put_contents($logFile, $logMessage, FILE_APPEND);
+            return null;
         }
+
+        $connection = DBC::getConnection();
+        $query = "SELECT * FROM users WHERE username = '$username'";
+        $result = mysqli_query($connection, $query);
+
+        if ($result && $user_data = mysqli_fetch_assoc($result)) {
+            if (password_verify($password, $user_data['password'])) {
+                unset(self::$failedLoginAttempts[$username]); 
+                $user = new User($user_data['id'], $user_data['username'], $user_data['password']);
+                return $user;
+            }
+        }
+        if (!isset(self::$failedLoginAttempts[$username])) {
+            self::$failedLoginAttempts[$username] = array();
+        }
+        self::$failedLoginAttempts[$username][] = time();
+
+        return null;
     }
 
-    return null;
-}
 
 
     public static function registerUser($username, $password)

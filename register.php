@@ -81,9 +81,9 @@ if (isset($_POST['reg_user'])) {
         <div class="input-group">
             <button type="submit" class="btn" name="reg_user">Register</button>
         </div>
-        <p>
+        <p><div>
             Already a member? <a href="login.php">Sign in</a>
-        </p>
+        </p></div>
     </form>
 </body>
 </html>
