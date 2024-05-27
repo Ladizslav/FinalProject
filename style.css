@@ -53,3 +53,39 @@ div {
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.thread-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.thread {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.thread p {
+    margin: 0;
+}
+
+.thread p:last-child {
+    margin-top: 10px;
+    color: #888;
+    font-size: 0.8em;
+}
+
+.add-thread-btn {
+    display: block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.add-thread-btn:hover {
+    background-color: #0056b3;
+}

@@ -13,13 +13,13 @@ session_start(); ?>
 <body>
     <?php include 'header.php'; ?>
     
-    <div class="content">
+    <div>
         <h1>Welcome to Our Website</h1>
         <?php if (isset($_SESSION['user'])): ?>
             <p>Hello, <?php echo htmlspecialchars($_SESSION['user']->getName(), ENT_QUOTES, 'UTF-8'); ?>!</p>
         <?php else: ?>
         <?php endif; ?>
-        <p>This is a simple page to describe our project and team.</p>
+        xd
     </div>
 
     <?php include 'footer.php'; ?>

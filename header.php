@@ -15,15 +15,15 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 <body>
     <header>
-            <h1>Lesgo</h1>
+        <h1>Lesgo</h1>
             
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <!-- <li><a href="about.php">About</a></li> -->
                 <?php if (isset($_SESSION['user'])): ?>
-                    <!-- <li><a href="data.php">Data</a></li>
-                    <li><a href="threads.php">Threads</a></li> -->
+                    <!-- <li><a href="data.php">Data</a></li> -->
+                    <li><a href="threads.php">Threads</a></li> 
                     <li><span class="logout-btn" onclick="location.href='logout.php'">Logout</span></li>
                 <?php else: ?>
                     <li><a href="register.php">Register</a></li>

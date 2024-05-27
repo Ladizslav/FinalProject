@@ -52,11 +52,31 @@ class DBC
 create database logintest;
 use logintest;
 
-CREATE TABLE users (
-  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  username varchar(100) NOT NULL,
-  password varchar(100) NOT NULL
+create table users (
+  id int auto_increment primary key,
+  username varchar(100) not null,
+  password varchar(100) not null
 );
+
+create table threads (
+    id int auto_increment primary key,
+    title VARCHAR(255) not null,
+    user_id int not null,
+    created_at timestamp default current_timestamp,
+    foreign key (user_id) references users(id)
+);
+
+create table messages (
+    id int auto_increment primary key,
+    thread_id int not null,
+    user_id int not null,
+    content text not null,
+    created_at timestamp default current_timestamp,
+    foreign key (thread_id) references threads(id),
+    foreign key (user_id) references users(id)
+);
+
+
 
 select * from users; 
 */
