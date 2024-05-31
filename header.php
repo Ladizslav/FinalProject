@@ -14,7 +14,7 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 <body>
     <header>
-        <h1>Lesgo</h1>
+        <h1>Láďova vláknová stránka</h1>
         <nav>
             <ul>
                 <li><a class="btn" href="index.php">Ůvodní stránka</a></li>
