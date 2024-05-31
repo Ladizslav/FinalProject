@@ -7,15 +7,16 @@ require_once "classes/User.php";
 $username = "";
 $errors = array();
 
+// Zpracování formuláře registrace
 if (isset($_POST['reg_user'])) {
-    $username = $_POST['username'];
+    $username = $_POST['username'] ?? ''; 
 
     if (empty($username)) {
         array_push($errors, "Jméno je vyžadováno");
     }
 
-    $password_1 = $_POST['password_1'];
-    $password_2 = $_POST['password_2'];
+    $password_1 = $_POST['password_1'] ?? ''; // Získání hesla 
+    $password_2 = $_POST['password_2'] ?? ''; // Získání 2. hesla 
 
     if (empty($password_1)) {
         array_push($errors, "Heslo je vyžadováno");
@@ -30,13 +31,15 @@ if (isset($_POST['reg_user'])) {
 
         if ($user) {
             $_SESSION['success'] = "Registrace se povedla"; 
-            header('location: login.php');
+            header('location: login.php'); 
             exit(); 
         } else {
             array_push($errors, "Registrace se nepovedla");
         }
     }
+
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -51,19 +54,15 @@ if (isset($_POST['reg_user'])) {
     </div>
 
     <?php
-    if (isset($_SESSION['success'])) {
-        echo '<div class="success-message">' . $_SESSION['success'] . '</div>';
-        unset($_SESSION['success']);
-    }
-
     if (count($errors) > 0) {
         echo '<div class="error-messages">';
         foreach ($errors as $error) {
-            echo '<p>' . $error . '</p>';
+            echo $error;
         }
         echo '</div>';
     }
     ?>
+    <p></p>
     
     <form method="post" action="register.php">
         <div>

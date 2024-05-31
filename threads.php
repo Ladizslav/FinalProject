@@ -18,8 +18,9 @@ $result = mysqli_query($connection, $query);
 <body>
 <?php include 'header.php'; ?> 
 
-    <div><h1>Vlákna</h1></div>
     <div class="thread-container">
+        <h1>Vlákna</h1>
+
         <?php if (isset($_SESSION['user'])): ?>
             <form action="add_threads.php" method="GET">
                 <button type="submit" class="btn">Přidat nové vlákno</button>

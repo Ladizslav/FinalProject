@@ -12,28 +12,27 @@ $user = $_SESSION['user'];
 $user_id = $user->getId();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $content = $_POST['content']; 
-    $title = isset($_POST['title']) ? $_POST['title'] : ''; 
+    $content = $_POST['content'] ?? ''; 
+    $title = $_POST['title'] ?? ''; 
 
-    if (!empty($content)) { 
-        $username = User::getUsernameById($user_id);
-
-        if ($username !== null) { 
-            $connection = DBC::getConnection();
-            $query = "INSERT INTO threads (username, title, content) VALUES (?, ?, ?)";
-            $statement = $connection->prepare($query);
-            $statement->bind_param("sss", $username, $title, $content);
-            $statement->execute();
-            $statement->close();
-            
-            header('location: threads.php');
-            exit();
-        } else {
-            echo "Uživatel s tímhle ID $user_id nebyl nalezen.";
-        }
-    } else {
+    if (empty($content)) { 
         echo "Prosím napište něco do kontentu.";
+        exit();
     }
+    
+    $username = User::getUsernameById($user_id);
+
+    if ($username === null) { 
+        echo "Uživatel s tímhle ID $user_id nebyl nalezen.";
+        exit();
+    }
+
+    $connection = DBC::getConnection();
+    $query = "INSERT INTO threads (username, title, content) VALUES ('$username', '$title', '$content')";
+    mysqli_query($connection, $query);
+    
+    header('location: threads.php');
+    exit();
 }
 ?>
 
@@ -51,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div>
         <h1>Přidat vlákno </h1>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" >
+        <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" >
             <label for="title">Název:</label><br>
             <input type="text" id="title" name="title"><br>
             <label for="content">Kontent:</label><br>

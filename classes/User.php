@@ -5,6 +5,7 @@ class User{
     protected string $name;
     protected string $password;
 
+    // Konstruktor pro vytvoření uživatele
     public function __construct(int $id, string $name,string $password){
         $this-> id = $id;
         $this-> name = $name;
@@ -32,6 +33,7 @@ class User{
         return $this->jmeno .":". $this->heslo;
     }
 
+    //Získání uživatele pomocí uživatelského jména a hesla
     public static function getUserByUsernameAndPassword($username, $password)
     {
     $connection = DBC::getConnection();
@@ -48,10 +50,11 @@ class User{
     return null;
     }
 
+    // Registrace nového uživatele.
     public static function registerUser($username, $password)
     {
         $connection = DBC::getConnection();
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Zabezpečení hesla
 
         $query = "INSERT INTO users (username, password) VALUES ('$username', '$hashedPassword')";
         $result = mysqli_query($connection, $query);
@@ -64,11 +67,9 @@ class User{
         }
     }
     
+    // Získá uživatelské jméno pomocí ID uživatele.
     public static function getUsernameById($user_id) {
-        // Připojení k databázi
         $connection = DBC::getConnection();
-        
-        // Dotaz na získání uživatelského jména na základě ID
         $query = "SELECT username FROM users WHERE id = ?";
         $statement = $connection->prepare($query);
         $statement->bind_param("i", $user_id);

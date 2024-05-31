@@ -11,10 +11,7 @@ class DBC
     private static $instance = null;
     private $connection;
 
-    private function __construct()
-    {
-    }
-
+    // Získání spojení s databází
     public static function getConnection()
     {
         if (!self::$instance) {
@@ -25,6 +22,7 @@ class DBC
         return self::$instance->connection;
     }
 
+    // Připojení k databázi
     private function connect()
     {
         $this->connection = mysqli_connect(
@@ -40,6 +38,7 @@ class DBC
         }
     }
 
+    //Uzavření spojení s databází
     public static function closeConnection()
     {
         if (self::$instance && self::$instance->connection) {
