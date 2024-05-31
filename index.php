@@ -23,7 +23,6 @@ session_start(); ?>
             <li>Buďte v obraze s nejnovějšími příspěvky komunity</li>
         </ul>
 
-
         <?php if (!isset($_SESSION['user'])): ?>
             <p>Jste zde poprvé? Neváhejte se <a href="register.php">zaregistrovat</a>. Už máte účet? <a href="login.php">Přihlaste se</a>, abyste získali přístup k dalším funkcím a zapojili se do konverzace.</p>
         <?php endif; ?>

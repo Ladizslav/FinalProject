@@ -18,14 +18,14 @@ if (session_status() == PHP_SESSION_NONE) {
         <nav>
             <ul>
                 <li><a class="btn" href="index.php">Ůvodní stránka</a></li>
-                <?php if (isset($_SESSION['user'])): ?>
-                    <li><a class="btn" href=" threads.php">Vlákna</a></li> 
-                    <li><a class="btn" onclick="location.href='logout.php'">Odhlásit </a></li>
-                <?php else: ?>
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <li><a class="btn" href=" threads.php">Vlákna</a></li>
+                    <li><a class="btn" onclick="location.href='logout.php'">Odhlásit</a></li>
+                <?php } else { ?>
                     <li><a class="btn" href=" threads.php">Vlákna</a></li>
                     <li><a class="btn" href="register.php">Registrovat</a></li>
                     <li><a class="btn" href="login.php">Přihlásit</a></li>
-                <?php endif; ?>
+                <?php } ?>
             </ul>
         </nav>
     </header>

@@ -21,19 +21,19 @@ $result = mysqli_query($connection, $query);
     <div class="thread-container">
         <h1>Vlákna</h1>
 
-        <?php if (isset($_SESSION['user'])): ?>
+        <?php if (isset($_SESSION['user'])) { ?>
             <form action="add_threads.php" method="GET">
-                <button type="submit" class="btn">Přidat nové vlákno</button>
+                <button type="submit">Přidat nové vlákno</button>
             </form>
-        <?php endif; ?>
+        <?php } ?>
         <p></p>
-        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <div class="thread">
                 <h3><?php echo $row['title']; ?></h3>
                 <p><?php echo $row['content']; ?></p>
                 <p>Od: <?php echo $row['username']; ?> | Datum: <?php echo $row['created_at']; ?></p>
             </div>
-        <?php endwhile; ?>
+        <?php } ?>
     </div>
 
     <?php include 'footer.php'; ?>
