@@ -11,29 +11,29 @@ if (isset($_POST['reg_user'])) {
     $username = $_POST['username'];
 
     if (empty($username)) {
-        array_push($errors, "Username is required");
+        array_push($errors, "Jméno je vyžadováno");
     }
 
     $password_1 = $_POST['password_1'];
     $password_2 = $_POST['password_2'];
 
     if (empty($password_1)) {
-        array_push($errors, "Password is required");
+        array_push($errors, "Heslo je vyžadováno");
     }
 
     if ($password_1 != $password_2) {
-        array_push($errors, "The two passwords do not match");
+        array_push($errors, "Hesla se neshodují");
     }
 
     if (count($errors) == 0) {
         $user = User::registerUser($username, $password_1);
 
         if ($user) {
-            $_SESSION['success'] = "Registration successful"; 
+            $_SESSION['success'] = "Registrace se povedla"; 
             header('location: login.php');
             exit(); 
         } else {
-            array_push($errors, "Registration failed");
+            array_push($errors, "Registrace se nepovedla");
         }
     }
 }
@@ -47,7 +47,7 @@ if (isset($_POST['reg_user'])) {
 <body>
 <?php include 'header.php'; ?> 
     <div class="header">
-        <h2>Registrace</h2>
+        <h1>Registrace</h2>
     </div>
 
     <?php

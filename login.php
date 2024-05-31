@@ -23,11 +23,11 @@ if (isset($_POST['login_user'])) {
     $password = $_POST['password'];
 
     if (empty($username)) {
-        array_push($errors, "Uzivatelske jmeno je povinne");
+        array_push($errors, "Uživatelské jméno je povinné");
     }
 
     if (empty($password)) {
-        array_push($errors, "Heslo je povinne");
+        array_push($errors, "Heslo je povinné");
     }
 
     if (count($errors) == 0) {
@@ -38,7 +38,7 @@ if (isset($_POST['login_user'])) {
             header('location: index.php');
             exit();
         } else {
-            array_push($errors, "Nespravne uzivatelske jmeno nebo heslo");
+            array_push($errors, "Nespravné uživatelské jméno nebo heslo");
             recordFailedLoginAttempt($username);
             $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
             if ($_SESSION['login_attempts'] >= 3) {
@@ -64,7 +64,7 @@ function recordFailedLoginAttempt($username) {
 <?php include 'header.php'; ?> 
 <form method="post" action="login.php">
     <div class="header">
-        <h2>Přihlašení</h2>
+        <h1>Přihlašení</h1>
     </div>
     
     <?php foreach ($errors as $error): ?>

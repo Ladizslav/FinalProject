@@ -29,10 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('location: threads.php');
             exit();
         } else {
-            echo "User with ID $user_id was not found.";
+            echo "Uživatel s tímhle ID $user_id nebyl nalezen.";
         }
     } else {
-        echo "Please enter the content of the thread.";
+        echo "Prosím napište něco do kontentu.";
     }
 }
 ?>
@@ -49,12 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include 'header.php'; ?>
 
     <div>
-        <h1>Add Thread</h1>
+        <h1>Přidat vlákno </h1>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" >
-            <label for="title">Title:</label><br>
+            <label for="title">Název:</label><br>
             <input type="text" id="title" name="title"><br>
-            <label for="content">Content:</label><br>
+            <label for="content">Kontent:</label><br>
             <textarea id="content" name="content" required></textarea><br>
             <input type="submit" value="Submit" class="btn">
         </form>
