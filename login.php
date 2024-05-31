@@ -35,7 +35,7 @@ if (isset($_POST['login_user'])) {
 
         if ($user) {
             $_SESSION['user'] = $user;
-            header('location: welcome.php');
+            header('location: index.php');
             exit();
         } else {
             array_push($errors, "Nespravne uzivatelske jmeno nebo heslo");
@@ -64,7 +64,7 @@ function recordFailedLoginAttempt($username) {
 <?php include 'header.php'; ?> 
 <form method="post" action="login.php">
     <div class="header">
-        <h2>Prihlaseni</h2>
+        <h2>Přihlašení</h2>
     </div>
     
     <?php foreach ($errors as $error): ?>
@@ -72,7 +72,7 @@ function recordFailedLoginAttempt($username) {
     <?php endforeach; ?>
 
     <div>
-        <label>Jmeno</label>
+        <label>Jméno</label>
         <input type="text" name="username" value="<?php echo $username; ?>">
     </div>
     <div>
@@ -80,10 +80,10 @@ function recordFailedLoginAttempt($username) {
         <input type="password" name="password">
     </div>
     <div>
-        <button type="submit" class="btn" name="login_user">Prihlasit</button>
+        <button type="submit" class="btn" name="login_user">Přihlásit</button>
     </div>
     <p><div>
-        Nejste clenem? <a href="register.php">Registrace</a>
+        Nejste členem? <a href="register.php">Registrace</a>
     </p></div>
 </form>
 

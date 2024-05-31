@@ -42,12 +42,12 @@ if (isset($_POST['reg_user'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register</title>
+    <title>Registrace</title>
 </head>
 <body>
 <?php include 'header.php'; ?> 
     <div class="header">
-        <h2>Register</h2>
+        <h2>Registrace</h2>
     </div>
 
     <?php
@@ -66,23 +66,23 @@ if (isset($_POST['reg_user'])) {
     ?>
     
     <form method="post" action="register.php">
-        <div class="input-group">
-            <label>Username</label>
+        <div>
+            <label>Jméno</label>
             <input type="text" name="username" value="<?php echo $username; ?>">
         </div>
-        <div class="input-group">
-            <label>Password</label>
+        <div>
+            <label>Heslo</label>
             <input type="password" name="password_1">
         </div>
-        <div class="input-group">
-            <label>Confirm password</label>
+        <div>
+            <label>Potvrdit heslo</label>
             <input type="password" name="password_2">
         </div>
-        <div class="input-group">
-            <button type="submit" class="btn" name="reg_user">Register</button>
+        <div>
+            <button type="submit" class="btn" name="reg_user">Registrovat</button>
         </div>
         <p><div>
-            Already a member? <a href="login.php">Sign in</a>
+            Již členem? <a href="login.php">Přihlásit se</a>
         </p></div>
     </form>
 </body>

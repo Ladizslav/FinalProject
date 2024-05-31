@@ -14,12 +14,22 @@ session_start(); ?>
     <?php include 'header.php'; ?>
     
     <div>
-        <h1>Welcome to Our Website</h1>
-        <?php if (isset($_SESSION['user'])): ?>
-            <p>Hello, <?php echo htmlspecialchars($_SESSION['user']->getName(), ENT_QUOTES, 'UTF-8'); ?>!</p>
-        <?php else: ?>
+    <h1>Vítejte na naší webové stránce</h1>
+        <p>Vítej na mojem webu!</p>
+        <p>Vítejte na komunitní webové stránce, kde můžete objevovat, sdílet a zapojit se do vzrušujících diskuzí a obsahu. Ať už jste zde, abyste našli zajímavá vlákna, nebo sdíleli své vlastní nápady.</p>
+        <h2>Funkce</h2>
+        <ul>
+            <li>Zapojte se do diskuzí s ostatními uživateli</li>
+            <li>Sdílejte svá vlastní vlákna a nápady</li>
+            <li>Objevujte nové a trendy témata</li>
+            <li>Buďte v obraze s nejnovějšími příspěvky komunity</li>
+        </ul>
+
+        <p>Jsme rádi, že jste zde. Začněte prozkoumávat nyní a staňte se součástí naší rostoucí komunity!</p>
+
+        <?php if (!isset($_SESSION['user'])): ?>
+            <p>Jste zde poprvé? Neváhejte se <a href="register.php">zaregistrovat</a> a připojte se k naší komunitě. Už máte účet? <a href="login.php">Přihlaste se</a>, abyste získali přístup k dalším funkcím a zapojili se do konverzace.</p>
         <?php endif; ?>
-        xd
     </div>
 
     <?php include 'footer.php'; ?>

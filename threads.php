@@ -15,23 +15,23 @@ $result = mysqli_query($connection, $query);
     <title>Threads</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-    <?php include 'header.php'; ?> 
+<?php include 'header.php'; ?> 
 
     <div class="thread-container">
-        <h2>Threads</h2>
+        <h2>Vlákna</h2>
 
         <?php if (isset($_SESSION['user'])): ?>
-            <a href="add_threads.php" class="add-thread-btn">Add New Thread</a>
+            <form action="add_threads.php" method="GET">
+                <button type="submit" class="btn">Přidat nové vlákno</button>
+            </form>
         <?php endif; ?>
-
+        <p></p>
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
             <div class="thread">
                 <h3><?php echo $row['title']; ?></h3>
                 <p><?php echo $row['content']; ?></p>
-                <p>Posted by: <?php echo $row['username']; ?> | Date: <?php echo $row['created_at']; ?></p>
+                <p>Od: <?php echo $row['username']; ?> | Datum: <?php echo $row['created_at']; ?></p>
             </div>
         <?php endwhile; ?>
     </div>
